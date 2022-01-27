@@ -1,14 +1,9 @@
 # 최소, 최대
+# https://www.acmicpc.net/problem/10818
 
 import sys
 
-case = int(input())
-num = [None] * case
-a = sys.stdin.readline().split()
-
-def get_min() -> int:
-    for i in range(case):
-        num[i] = int(a[i])
+def get_min(case: int, num: list) -> int:
     temp = num[0]
     for j in range(1, case):
         if num[j] <= num[j - 1]:
@@ -17,9 +12,7 @@ def get_min() -> int:
             pass
     return temp
 
-def get_max() -> int:
-    for i in range(case):
-        num[i] = int(a[i])
+def get_max(case: int, num: list) -> int:
     temp = num[0]
     for j in range(1, case):
         if num[j] >= num[j - 1]:
@@ -28,11 +21,10 @@ def get_max() -> int:
             pass
     return temp
 
-def minmax() -> int:
-
-    for i in (range(case)):
-        num[i] = int(a[i])
-    print(get_min(), get_max(), end=' ')
-
-
-minmax()
+def main():
+    case = int(input())
+    a = sys.stdin.readline().split()
+    num = list(map(int, a))
+    print(get_min(case, num), get_max(case, num))
+    
+main()
