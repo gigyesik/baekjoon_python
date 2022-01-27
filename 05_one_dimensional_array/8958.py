@@ -18,7 +18,6 @@ def main():
     inox = [None] * case
     for i in range(case):
         inox[i] = input()
-    for i in range(case):
         print(get_score((inox)[i]))
 
 main()
