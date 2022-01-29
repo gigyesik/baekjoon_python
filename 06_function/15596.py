@@ -5,8 +5,8 @@ import sys
 
 def solve(a: list) -> int:
     ans = 0
-    for i in range(len(a)):
-        ans += int(a[i])
+    for i in a:
+        ans += i
     return ans
         
 """
