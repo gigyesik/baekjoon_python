@@ -3,15 +3,14 @@
 
 import sys
 
-def afteraverage(list: list) -> float:
-    average = sum(list[1:]) / (int(list[0]))
+def afteraverage(score: list) -> float:
+    n = score[0]
+    average = sum(score[1:]) / (int(score[0]))
     counter = 0
-    for i in range(1, len(list)):
-        if list[i] > average:
+    for i in range(1, len(score)):
+        if score[i] > average:
             counter += 1
-        else:
-            pass
-    result = ((counter / (int(list[0]))) * 100)
+    result = ((counter / ((score[0]))) * 100)
     return result
 
 
