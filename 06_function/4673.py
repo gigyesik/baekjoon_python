@@ -9,14 +9,23 @@ def d(n: int) -> int:
 
 def selfnum(n: int) -> list:
     numlist = list(range(1, n+1))
-    
-    for i in range(1, n+1):
-        if d(i) not in numlist:
-            pass
-        else:
-            numlist.remove(d(i))
+    counter = 0
+    choiceremove = numlist[counter]
+    lengthnum = len(numlist)
+
+    while counter < lengthnum:
+        choiceremove = numlist[counter]
+        while d(choiceremove) <= n :
+            if d(choiceremove) not in numlist:
+                pass
+            else:
+                numlist.remove(d(choiceremove))
+            choiceremove = d(choiceremove)
+        lengthnum = len(numlist)
+        counter += 1
 
     return numlist
+    
 
 
 def main(n):
