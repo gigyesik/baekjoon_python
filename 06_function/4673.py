@@ -10,16 +10,18 @@ def d(n: int) -> int:
 def underselfnum(n: int) -> list:
     numset = set(range(1,n+1))
     dnumset = set()
+
     for i in range(1, len(numset) + 1):
         if d(i) in numset:
             dnumset.add(d(i))
     result = sorted(numset - dnumset)
 
-    return list(result)
+    return result
 
 
 def main(n: int):
-    for i in range(len(underselfnum(n))):
-        print(underselfnum(n)[i])    
+    result = underselfnum(n)
+    for i in range(len(result)):
+        print(result[i])
 
 main(10000)
