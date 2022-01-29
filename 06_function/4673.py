@@ -7,29 +7,19 @@ def d(n: int) -> int:
         n += int(i)
     return n
 
-def selfnum(n: int) -> list:
-    numlist = list(range(1, n+1))
-    counter = 0
-    choiceremove = numlist[counter]
-    lengthnum = len(numlist)
+def underselfnum(n: int) -> list:
+    numset = set(range(1,n+1))
+    dnumset = set()
+    for i in range(1, len(numset) + 1):
+        if d(i) in numset:
+            dnumset.add(d(i))
+    result = sorted(numset - dnumset)
 
-    while counter < lengthnum:
-        choiceremove = numlist[counter]
-        while d(choiceremove) <= n :
-            if d(choiceremove) not in numlist:
-                pass
-            else:
-                numlist.remove(d(choiceremove))
-            choiceremove = d(choiceremove)
-        lengthnum = len(numlist)
-        counter += 1
-
-    return numlist
-    
+    return list(result)
 
 
-def main(n):
-    for i in range(len(selfnum(n))):
-        print(selfnum(n)[i])
+def main(n: int):
+    for i in range(len(underselfnum(n))):
+        print(underselfnum(n)[i])    
 
 main(10000)
