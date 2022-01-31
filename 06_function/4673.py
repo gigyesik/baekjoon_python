@@ -1,12 +1,11 @@
 # 셀프 넘버
 # https://www.acmicpc.net/problem/4673
 
-def d(n: int) -> int:
-    tho = n // 1000
-    hun = (n // 100) % 10
-    dec = (n // 10) % 10
-    mon = n % 10
-    result = n + tho + hun + dec + mon
+def d(n):
+    result = n
+    while n > 0:
+        res += n % 10
+        n //= 10
     return result
 
 
