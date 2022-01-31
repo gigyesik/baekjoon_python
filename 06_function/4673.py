@@ -2,26 +2,29 @@
 # https://www.acmicpc.net/problem/4673
 
 def d(n: int) -> int:
-    strn = str(n)
-    for i in strn:
-        n += int(i)
-    return n
-
-def underselfnum(n: int) -> list:
-    numset = set(range(1,n+1))
-    dnumset = set()
-
-    for i in range(1, len(numset) + 1):
-        if d(i) in numset:
-            dnumset.add(d(i))
-    result = sorted(numset - dnumset)
-
+    tho = n // 1000
+    hun = (n // 100) % 10
+    dec = (n // 10) % 10
+    mon = n % 10
+    result = n + tho + hun + dec + mon
     return result
 
 
-def main(n: int):
-    result = underselfnum(n)
-    for i in range(len(result)):
-        print(result[i])
+def underselfnum(n: int) -> list:
+    result = [True] * n
+    result[0] = False
+    result[1] = True
+    for i in range(1, n):
+        if d(i) < n:
+            result[d(i)] = False 
+    return result
 
-main(10000)
+
+def main():
+    n = 10000
+    result = underselfnum(n)
+    for i in range(n):
+        if result[i]:
+            print(i)
+
+main()
