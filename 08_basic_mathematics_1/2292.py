@@ -3,12 +3,13 @@
 
 def honeycomb(n: int) -> int:
     a0 = [1]
-    counter = 1
+    counter = 0
     an = a0
     
     while n not in an:
-        counter += 1
-        an = list(range(3*(n^2) - 3*n + 2, 3*(n^2) + 3*n + 2))
+        counter += 1        
+        an = list(range(3*(counter**2) - 3*counter + 2, 
+        3*(counter**2) + 3*counter + 2))
     return counter + 1
 
 
@@ -18,4 +19,4 @@ def main():
 
 main()
 
-# memory overflow
+#
