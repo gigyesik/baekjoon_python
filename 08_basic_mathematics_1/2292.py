@@ -2,15 +2,21 @@
 # https://www.acmicpc.net/problem/2292
 
 def honeycomb(n: int) -> int:
-    a0 = [1]
-    counter = 0
-    an = a0
+    a0 = 1
+    counter = 1
+    an = 3*(counter**2) - 3*counter + 2
+    annext = 3*((counter + 1)**2) - 3*(counter + 1) + 2
     
-    while n not in an:
-        counter += 1        
-        an = list(range(3*(counter**2) - 3*counter + 2, 
-        3*(counter**2) + 3*counter + 2))
-    return counter + 1
+    while True:
+        if n == a0:
+            return counter
+        elif n >= an:
+            if n >= annext:
+                an = annext
+                counter += 1
+                annext = 3*((counter + 1)**2) - 3*(counter + 1) + 2
+            else:
+                return counter + 1
 
 
 def main():
@@ -18,5 +24,3 @@ def main():
     print(honeycomb(num))
 
 main()
-
-# TimeOut
