@@ -8,16 +8,13 @@ def brevpooint(data: list) -> int:
     B = data[1]
     C = data[2]
     counter = 1
-    result = (C - B) * counter - A
-    while result < 0:
-        if result > 0:
-            return counter
-        elif C - B <= 0:
-            return -1
-        else:
-            counter = A // (C - B)
-            result = (C - B) * counter - A
-    return counter + 1
+    # result = (C - B) * counter - A
+
+    if C - B <= 0:
+        return -1
+    else:
+        counter = A // (C - B)
+        return counter + 1
 
 def main():
     data = sys.stdin.readline().split()
@@ -25,5 +22,3 @@ def main():
     print(brevpooint(intdata))
 
 main()
-
-# TimeOut
