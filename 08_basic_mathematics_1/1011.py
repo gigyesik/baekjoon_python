@@ -7,25 +7,19 @@ def fmttac(xy: list) -> int:
     x = xy[0]
     y = xy[1]
     length = y - x
-    sumn = 1
-    n = 1
-    remain = length - sumn
+    counter = 1
 
-    while sumn < length:
-        sumn = n * (n + 1)
-        remain = length - sumn
-        if sumn > length:
-            n -= 1
-            sumn = n * (n + 1)
-            remain = length - sumn
-            break
+    while True:
+        if length == 1:
+            return 1
         else:
-            n += 1
-
-    if remain - n > 1:
-        return 2 * n + 2
-    else:
-        return 2 * n + 1
+            if (counter ** 2) < length <= ((counter + 1) ** 2):
+                if length >= (((counter ** 2) + 1) + ((counter + 1) ** 2)) / 2:
+                    return (counter * 2) + 1
+                else:
+                    return counter * 2
+            else:
+                counter += 1
 
 def main():
     case = int(input())
@@ -36,4 +30,4 @@ def main():
 
 main()
 
-# fail
+#success
