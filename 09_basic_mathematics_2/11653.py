@@ -1,39 +1,40 @@
 # 소인수분해
 # https://www.acmicpc.net/problem/11653
 
-def prime(n: int) -> bool:
-    if n == 1:
-        return False
-    elif n == 2:
-        return True
-    else:
-        temp = 0
-        for i in range(2, n):
-            if n % i == 0:
-                temp = 0
-                break
-            else:
-                temp += 1
-        if temp != 0:
-            return True
-        else:
-            return False
-
 def underprime(n: int) -> list:
-    result = []
-    for i in range(2, (n+1) // 2):
-        if prime(i) == True:
-            result.append(i)
-    return result
+    prime = [None] * n
+    counter = 0
+
+    prime[counter] = 2
+    counter += 1
+    prime[counter] = 3
+    counter += 1
+
+    for i in range(5, n + 1, 2):
+        j = 1
+        while prime[j] ** 2 <= i:
+            if i % prime[j] == 0:
+                break
+            j += 1
+        else:
+            prime[counter] = i
+            counter += 1
+    
+    if None in prime:
+        indexnone = prime.index(None)
+        return(prime[:indexnone])
+    else:
+        return prime
 
 def factorization(n: int) -> list:
     result = []
-    if prime(n) == True:
+    temp = underprime(n)
+    lastvalue = underprime(n)[-1]
+    if n == lastvalue:
         result.append(n)
         return result
     else:
-        temp = underprime(n)
-        while prime(n) == False and n != 1:
+        while n != 1:
             for i in temp:
                 if n % i == 0:
                     result.append(i)
@@ -49,3 +50,5 @@ def main():
         print(result[i])
 
 main()
+
+# TimeOut
