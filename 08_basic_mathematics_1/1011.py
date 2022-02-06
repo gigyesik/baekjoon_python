@@ -22,7 +22,7 @@ def fmttac(xy: list) -> int:
         else:
             n += 1
 
-    if remain > 2 * n:
+    if remain - n > 1:
         return 2 * n + 2
     else:
         return 2 * n + 1
