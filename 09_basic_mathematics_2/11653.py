@@ -19,30 +19,33 @@ def prime(n: int) -> bool:
         else:
             return False
 
+def underprime(n: int) -> list:
+    result = []
+    for i in range(2, (n+1) // 2):
+        if prime(i) == True:
+            result.append(i)
+    return result
+
 def factorization(n: int) -> list:
     result = []
     if prime(n) == True:
         result.append(n)
         return result
     else:
-        temp = 2
-        while prime(n) == False:
-            if prime(temp) == True and n % temp == 0:
-                result.append(temp)
-                n = n // temp
-            else:
-                temp += 1
-        if prime(n) == True:
+        temp = underprime(n)
+        while prime(n) == False and n != 1:
+            for i in temp:
+                if n % i == 0:
+                    result.append(i)
+                    n = n // i
+        if n != 1:
             result.append(n)
-    return result
+    return sorted(result)
 
 def main():
     n = int(input())
     result = factorization(n)
-    if result != None:
-        for i in range(len(result)):
-            print(result[i])
+    for i in range(len(result)):
+        print(result[i])
 
 main()
-
-# TimeOut
